@@ -19,6 +19,7 @@
         <LinearLayout
             android:padding="5dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="1dp"
             android:layout_toRightOf="@+id/iv_icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
