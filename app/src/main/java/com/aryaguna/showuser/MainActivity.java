@@ -23,7 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TextView csRecyclerView;
     RecyclerView recyclerView;
     CustomAdapter adapter;
     LinearLayoutManager linearLayoutManager;
@@ -40,10 +39,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.CsRecyclerView);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        /*Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://jsonplaceholder.typicode.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();*/
 
         GetService getService = ApiClient.getRetrofitInstance().create(GetService.class);
 
@@ -70,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<List<User>> call, Throwable t){
                 progressDialog.dismiss();
                 Toast.makeText(MainActivity.this, "Ada yang salah .. tolong coba lagi", Toast.LENGTH_SHORT).show();
-                //csRecyclerView.setText(t.getMessage());
             }
         });
     }

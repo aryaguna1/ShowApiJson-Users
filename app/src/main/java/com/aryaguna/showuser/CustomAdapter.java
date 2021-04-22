@@ -48,7 +48,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterHol
         String email = getUserList.getEmail();
         int id = getUserList.getId();
 
-        holder.tvUsername.setText("User Name : "+username);
+        holder.tvUsername.setText("Username : "+username);
         holder.tvName.setText("Name : "+name);
         holder.tvEmail.setText("Email : "+email);
         holder.tvId.setText("Id : "+id);
@@ -57,9 +57,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterHol
                 .load(pathImage)
                 .apply(new RequestOptions().fitCenter())
                 .into(holder.ivIcon);
-
-        Picasso.Builder builder = new Picasso.Builder(context);
-        builder.downloader(new OkHttp3Downloader(context));
 
     }
 

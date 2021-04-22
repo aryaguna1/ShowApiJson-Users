@@ -3,13 +3,13 @@ package com.aryaguna.showuser.model;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
-    //@SerializedName("id")
+    @SerializedName("id")
     private int id;
-    //@SerializedName("username")
+    @SerializedName("username")
     private String username;
-   //@SerializedName("name")
+    @SerializedName("name")
     private String name;
-   //@SerializedName("email")
+    @SerializedName("email")
     private String email;
 
     public User(int id, String username, String name, String email){
