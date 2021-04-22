@@ -1,11 +1,13 @@
 package com.aryaguna.showuser;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,20 +45,34 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterHol
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.AdapterHolder holder, int position) {
         final User getUserList = userList.get(position);
-        String username = getUserList.getUsername();
         String name = getUserList.getName();
-        String email = getUserList.getEmail();
         int id = getUserList.getId();
 
-        holder.tvUsername.setText("Username : "+username);
-        holder.tvName.setText("Name : "+name);
-        holder.tvEmail.setText("Email : "+email);
+        holder.tvName.setText(""+name);
         holder.tvId.setText("Id : "+id);
 
         Glide.with(holder.mView.getContext())
                 .load(pathImage)
                 .apply(new RequestOptions().fitCenter())
                 .into(holder.ivIcon);
+
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "loading...", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, DetailActivity.class);
+
+                intent.putExtra( "id",getUserList.getId());
+                intent.putExtra("name", getUserList.getName());
+                intent.putExtra("username", getUserList.getUsername());
+                intent.putExtra("email", getUserList.getEmail());
+                intent.putExtra("phone", getUserList.getPhone());
+                intent.putExtra("website", getUserList.getWebsite());
+
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -68,7 +84,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterHol
     public class AdapterHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
-        TextView tvUsername, tvName, tvEmail, tvId;
+        TextView tvUsername, tvName, tvEmail, tvId, tvPhone, tvWebsit;
         ImageView ivIcon;
         public AdapterHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +93,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.AdapterHol
             tvName = mView.findViewById(R.id.tv_name);
             tvEmail = mView.findViewById(R.id.tv_email);
             tvId = mView.findViewById(R.id.tv_id);
+            tvPhone = mView.findViewById(R.id.tv_phone);
+            tvWebsit = mView.findViewById(R.id.tv_website);
             ivIcon = mView.findViewById(R.id.iv_icon);
         }
     }

@@ -11,12 +11,18 @@ public class User {
     private String name;
     @SerializedName("email")
     private String email;
+    @SerializedName("phone")
+    private String phone;
+    @SerializedName("website")
+    private String website;
 
-    public User(int id, String username, String name, String email){
+    public User(int id, String username, String name, String email, String phone, String website){
         this.id = id;
         this.username = username;
         this.name = name;
         this.email = email;
+        this.phone = phone;
+        this.website = website;
     }
 
     public int getId() {
@@ -49,5 +55,21 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 }
